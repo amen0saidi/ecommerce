@@ -1,25 +1,61 @@
-import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import ProductListingView from '../views/ProductListingView.vue';
+import ProductDetailView from '../views/ProductDetailView.vue';
+import CartView from '../views/CartView.vue';
+import CheckoutView from '../views/CheckoutView.vue';
+import LoginView from '../views/LoginView.vue';
+import RegisterView from '../views/RegisterView.vue';
+import OrderConfirmationView from '../views/OrderConfirmationView.vue';
 
+// Define routes
 const routes = [
   {
-    path: "/",
-    name: "home",
+    path: '/',
+    name: 'home',
     component: HomeView,
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: '/products',
+    name: 'products',
+    component: ProductListingView,
+  },
+  {
+    path: '/products/:id',
+    name: 'product-detail',
+    component: ProductDetailView,
+    props: true,
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: CartView,
+  },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: CheckoutView,
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView,
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView,
+  },
+  {
+    path: '/order-confirmation',
+    name: 'order-confirmation',
+    component: OrderConfirmationView,
   },
 ];
 
+// Create the router instance
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(), // Use HTML5 history mode
   routes,
 });
 

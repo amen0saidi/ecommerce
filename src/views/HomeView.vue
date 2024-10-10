@@ -1,18 +1,30 @@
 <template>
-  <HelloWorld />
+  <div>
+    <h1>Welcome to Our Store</h1>
+    <SearchBar @search="performSearch" />
+    <ProductListingView />
+  </div>
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import SearchBar from '../components/SearchBar.vue';
+import ProductListingView from './ProductListingView.vue';
 
-// Components
-import HelloWorld from "../components/HelloWorld.vue";
-
-export default defineComponent({
-  name: "HomeView",
-
+export default {
+  name: 'HomeView',
   components: {
-    HelloWorld,
+    SearchBar,
+    ProductListingView,
   },
-});
+  methods: {
+    performSearch(query) {
+      // Logic to handle search
+      console.log('Search query:', query);
+    },
+  },
+};
 </script>
+
+<style scoped>
+/* Add styles for Home view */
+</style>
